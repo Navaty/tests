@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tcategories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tcategories.each do |tcategory| %>
+      <tr>
+        <td><%= tcategory.title %></td>
+        <td><%= tcategory.description %></td>
+        <td><%= link_to 'Show', tcategory %></td>
+        <td><%= link_to 'Edit', edit_tcategory_path(tcategory) %></td>
+        <td><%= link_to 'Destroy', tcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tcategory', new_tcategory_path %>

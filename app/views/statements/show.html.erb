@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @statement.email %>
+</p>
+
+<p>
+  <strong>Fio:</strong>
+  <%= @statement.fio %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @statement.phone %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @statement.position %>
+</p>
+
+<p>
+  <strong>Test:</strong>
+  <%= @statement.test %>
+</p>
+
+<%= link_to 'Edit', edit_statement_path(@statement) %> |
+<%= link_to 'Back', statements_path %>

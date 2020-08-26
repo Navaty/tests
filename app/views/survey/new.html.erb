@@ -1,0 +1,22 @@
+<%= form_for :survey do |f| %>
+ 
+
+  <h1><%= @test.title %></h1>
+  
+    <% @test.questions.each_with_index do |q, index| %>
+
+ 	<div> Вопрос: <%= q.body %></div> <br>
+
+ 		<div>
+ 			Ответы:
+ 			<% q.answers.each do |a| %>
+			    <%= f.label index.to_s.parameterize.underscore.to_sym, a.body, :value => a.id  %>
+			    <%= f.radio_button :index, true %>
+ 			<% end %>
+ 		</div>
+ 	<% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
