@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	root 'tests#index'
   resources :statements
   resources :answers
   resources :questions

@@ -25,16 +25,22 @@ class SurveyController < ApplicationController
   # POST /surveys
   # POST /surveys.json
   def create
-    @survey = Survey.new(survey_params)
-
-    respond_to do |format|
-      if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
-        format.json { render :show, status: :created, location: @survey }
-      else
-        format.html { render :new }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
+    @test_id = params[:id]
+    @score = 0
+    @total = 0
+    @survey = params[:survey]
+    @survey.each do |a, b|
+      @total += 1
+      if(Answer.find(b).correct)
+        @score += 1
       end
+    end
+    summary = @score.to_f/@total*100
+    if summary <70
+      render :loser
+    else
+      @statement = Statement.new
+      render :winer
     end
   end
 

@@ -15,6 +15,7 @@ class StatementsController < ApplicationController
   # GET /statements/new
   def new
     @statement = Statement.new
+    @test_id = params[:test_id]
   end
 
   # GET /statements/1/edit
@@ -69,6 +70,6 @@ class StatementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def statement_params
-      params.require(:statement).permit(:email, :fio, :phone, :position, :test_id)
+      params.require(:statement).permit(:email, :fio, :phone, :position, :test_id, :notify, :paid)
     end
 end
