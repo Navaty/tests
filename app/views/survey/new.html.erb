@@ -1,27 +1,38 @@
+<style>
+input[type=radio]{
+  transform:scale(1.5);
+}
+</style>
+<div class="container ">
 <%= form_for :survey, url: survey_index_path(id: @test) do |f| %>
- 
-  <h1>ТЕСТ <%= @test.title %></h1>
-  
+	<div class="row mt-3 justify-content-center">
+	 	<div class="col-10 py-2 bg-primary text-center text-white">
+	  		<h1><%= @test.title %></h1>
+  		</div>
+  	</div>
+
+
     <% @test.questions.each_with_index do |q, index| %>
+    <div class="row justify-content-center mb-3">
+    	<div class="col-10 py-2 border border-info rounded">
+			<div class="form-group">
+			 	<%= f.label q.body, style:"font-size:1.5em" %>
+			 </div>
 
- 	<div style="font-size:2em"><%= q.body %></div> <br>
-
- 		<div>
- 			Варинаты:
- 			<table>
- 				<tr>
- 			<% q.answers.each do |a| %>
- 				<td>
-			    <%= f.label index.to_s.parameterize.underscore.to_sym, a.body, :value => a.id  %>
-			    <%= f.radio_button q.id, a.id %>
-			</td>
- 			<% end %>
- 			</tr>
- 			</table>
+			<div class="form-group">
+		 			<% q.answers.each do |a| %>
+		 				<div class="radio">
+					    <%= f.radio_button q.id, a.id %>
+					    <%= f.label q.id.to_s.parameterize.underscore.to_sym, a.body, :value => a.id  %>
+					    </div>
+		 			<% end %>
+ 			</div>
  		</div>
+ 	</div>
  	<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row justify-content-center">
+    <%= f.submit "Отправить", class: "btn btn-primary"%>
   </div>
 <% end %>
+</div>

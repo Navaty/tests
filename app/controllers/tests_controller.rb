@@ -69,6 +69,6 @@ class TestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def test_params
-      params.require(:test).permit(:title, :description, :active, :tcategory_id, questions_attributes: [:body, :_destroy, :id, answers_attributes: [:body, :_destroy, :id, :correct]])
+      params.require(:test).permit(:title, :description, :active, :tcategory_id, :certificate, questions_attributes: [:body, :_destroy, :id, answers_attributes: [:body, :_destroy, :id, :correct]])
     end
 end

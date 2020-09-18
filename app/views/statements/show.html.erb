@@ -25,5 +25,19 @@
   <%= @statement.test %>
 </p>
 
+<% if @statement.certificate? %>
+
+<p>
+    ЕСТЬ СЕРТИФИКАТ <%= link_to "СКАЧАТЬ", @statement.certificate.url, target: "_blank" %>
+</p>
+ <% else %>
+
+ <p>
+  NOOOOOOOOOOOOO
+ </p>
+
+ <% end %>
+
 <%= link_to 'Edit', edit_statement_path(@statement) %> |
-<%= link_to 'Back', statements_path %>
+<%= link_to 'Back', statements_path %> |
+<%= link_to 'Обновить сертификат', update_certificate_statement_path(@statement) %>

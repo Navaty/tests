@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-	root 'tests#index'
-  resources :statements
+	root 'pages#wellcome'
+	
+  resources :statements do 
+  	get 'update_certificate', on: :member
+  end
   resources :answers
   resources :questions
   resources :tests

@@ -32,7 +32,15 @@
     <%= form.text_field :position, id: :statement_position %>
   </div>
 
+    <div class="field">
+    <%= form.label :place, "Место работы" %>
+    <%= form.text_field :place, id: :statement_place %>
+  </div>
 
+    <div class="field">
+    <%= form.label :name, "Имя" %>
+    <%= form.text_field :name, id: :statement_name %>
+  </div>
 
   <div class="field">
     <%= form.check_box :notify %>

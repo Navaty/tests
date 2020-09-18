@@ -1,24 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="container testpage">
 
+  <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col d-flex justify-content-center">
+   <h1><%= @test.title %></h1>
+  </div>
+</div>
+  
+<div class="row">
+  <div class="col  d-flex justify-content-center">
 <p>
-  <strong>Title:</strong>
-  <%= @test.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
   <%= @test.description %>
 </p>
+  </div>
+</div>
+  <div class="row">
+  <div class="col  d-flex justify-content-center">
+<%= image_tag 'example.jpg', size: "270x400" %>
+    </div>
+</div>
+<% if @test.certificate? %>
 
 <p>
-  <strong>Active:</strong>
-  <%= @test.active %>
+    ЕСТЬ СЕРТИФИКАТ <%= link_to "СКАЧАТЬ", @test.certificate.url, target: "_blank" %>
 </p>
-
-<p>
-  <strong>Tcategory:</strong>
-  <%= @test.tcategory %>
-</p>
-
+ <% end %>
+ <br>
+<div class="row">
+  <div class="col  d-flex justify-content-center">
+<%= link_to('Пройти тест', new_survey_path(:test_id => @test), class: "btn btn-primary active") %>
+ </div>
+</div>
 <%= link_to 'Edit', edit_test_path(@test) %> |
 <%= link_to 'Back', tests_path %>
+</div>

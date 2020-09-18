@@ -16,6 +16,11 @@
     <%= form.text_field :title, id: :test_title %>
   </div>
 
+    <div class="field">
+       <%= form.label :title, "Шаблон сертификата" %>
+      <%= form.file_field :certificate %>
+  </div>
+
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :test_description %>
