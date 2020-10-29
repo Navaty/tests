@@ -6,7 +6,7 @@ input[type=radio]{
 <div class="container ">
 <%= form_for :survey, url: survey_index_path(id: @test) do |f| %>
 	<div class="row mt-3 justify-content-center">
-	 	<div class="col-10 py-2 bg-primary text-center text-white">
+	 	<div class="col-10 py-2 bg-info text-center text-white">
 	  		<h1><%= @test.title %></h1>
   		</div>
   	</div>
@@ -32,7 +32,7 @@ input[type=radio]{
  	<% end %>
 
   <div class="row justify-content-center">
-    <%= f.submit "Отправить", class: "btn btn-primary"%>
+    <%= f.submit "Отправить", class: "btn btn-info"%>
   </div>
 <% end %>
 </div>

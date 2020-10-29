@@ -4,7 +4,7 @@ class TestsController < ApplicationController
   # GET /tests
   # GET /tests.json
   def index
-    @tests = Test.all
+    @tcategory = Tcategory.includes(:tests)
   end
 
   # GET /tests/1
