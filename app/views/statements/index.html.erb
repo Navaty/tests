@@ -6,6 +6,9 @@
     <%= form_tag statements_path, :method => 'get', :id => "statements_search", class: "form-group search-form" do %>
         <%# hidden_field_tag :order, params[:order], :id => "place_order_field", class: "sort-field" %>
         <div class="form-row">
+          <div class="col-md-12 mb-2">
+                <%= text_field_tag :ticket_id, params[:ticket_id], class: "form-control", placeholder: "ID" %>
+            </div> 
             <div class="col-md-6 mb-2">
                 <%= text_field_tag :email, params[:email], class: "form-control", placeholder: "Email" %>
             </div> 

@@ -4,7 +4,8 @@ class StatementsController < ApplicationController
   # GET /statements
   # GET /statements.json
   def index
-    @statements = Statement.all
+    @statements = Statement.where("id LIKE ? AND email LIKE ? AND fio LIKE ?", "%#{params[:ticket_id]}%", "%#{params[:email]}%", "%#{params[:fio]}%")
+   # @statements = Statement.all
   end
 
   # GET /statements/1
