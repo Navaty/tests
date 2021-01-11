@@ -4,8 +4,9 @@ class StatementsController < ApplicationController
   # GET /statements
   # GET /statements.json
   def index
-    @statements = Statement.where("id LIKE ? AND email LIKE ? AND fio LIKE ?", "%#{params[:ticket_id]}%", "%#{params[:email]}%", "%#{params[:fio]}%")
-   # @statements = Statement.all
+    @statements = Statement.find_statement(params[:search])
+    #@statements = Statement.where("id LIKE ? AND email LIKE ? AND fio LIKE ?", "%#{params[:ticket_id]}%", "%#{params[:email]}%", "%#{params[:fio]}%")
+    #@statements = Statement.all
   end
 
   # GET /statements/1
@@ -30,6 +31,7 @@ class StatementsController < ApplicationController
   # POST /statements
   # POST /statements.json
   def create
+    raise
     @statement = Statement.new(statement_params)
 
     path_to_file = "#{Rails.root}/app/assets/images/cert#{@statement.id}.pdf"
@@ -120,6 +122,7 @@ class StatementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def statement_params
-      params.require(:statement).permit(:email, :fio, :phone, :position, :place, :name, :test_id, :notify, :paid, :certificate)
+      params.require(:statement).permit(:email, :fio, :phone, :position, :place, :name, :test_id, :notify, :paid, :certificate, {search: [:paid, 
+                                                                                                     :email, :fio, :ticket_id,{date: [:start, :end]}]})
     end
 end

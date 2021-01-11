@@ -7,27 +7,27 @@
         <%# hidden_field_tag :order, params[:order], :id => "place_order_field", class: "sort-field" %>
         <div class="form-row">
           <div class="col-md-12 mb-2">
-                <%= text_field_tag :ticket_id, params[:ticket_id], class: "form-control", placeholder: "ID" %>
+                <%= text_field_tag "search[ticket_id]", (params[:search][:ticket_id] if params[:search].present?), class: "form-control", placeholder: "ID" %>
             </div> 
             <div class="col-md-6 mb-2">
-                <%= text_field_tag :email, params[:email], class: "form-control", placeholder: "Email" %>
+                <%= text_field_tag "search[email]", (params[:search][:email] if params[:search].present?), class: "form-control", placeholder: "Email" %>
             </div> 
             <div class="col-md-6 mb-2">
-                <%= text_field_tag :fio, params[:fio],  class:"form-control", placeholder: "Fio" %>
+                <%= text_field_tag "search[fio]", (params[:search][:fio] if params[:search].present?),  class:"form-control", placeholder: "Fio" %>
             </div> 
 
             <div class="col-md-3 mb-2 d-block ">
 
 
-                  <input class="form-control" type="text" name="date[:start]" id="btdate" placeholder="Дата начала" onfocus="(this.type='date');(this.click())" onblur="(this.type='text')"> 
+                  <input class="form-control" type="text" name="search[date[start]]" value= "<%= params[:search][:date][:start] if params[:search].present? %>" id="btdate" placeholder="Дата начала" onfocus="(this.type='date');(this.click())" onblur="(this.type='text')"> 
                                 
             </div>
           <div class="col-md-3 mb-2 d-block">
-            <input class="form-control" type="text" name="date[:end]" id="btdate" placeholder="Конец даты" onfocus="(this.type='date');(this.click())" onblur="(this.type='text')"> 
+            <input class="form-control" type="text" name="search[date[end]]" id="btdate" placeholder="Конец даты" onfocus="(this.type='date');(this.click())" onblur="(this.type='text')" value= "<%= params[:search][:date][:end] if params[:search].present? %>"> 
            </div>
             <div class="col-md-3 d-block form-check">
                 <span class="form-control">
-                <%= check_box_tag :paid, true, params[:paid], class: " form-check-input ", style: "margin-left: 5px" %>
+                <%= check_box_tag "search[paid]", true, (params[:search][:paid] if params[:search].present?), class: " form-check-input ", style: "margin-left: 5px" %>
                 <%= label_tag :paid, 'Оплаченные', class: "form-check-label", style: "margin-left: 25px" %>
                 </span>
             </div>
