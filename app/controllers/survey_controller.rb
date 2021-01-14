@@ -18,21 +18,30 @@ class SurveyController < ApplicationController
     @test = Test.find(params[:test_id])
   end
 
-  # GET /surveys/1/edit
+  # GET /surveys/1/editl
   def edit
   end
 
   # POST /surveys
   # POST /surveys.json
   def create
+   # @survey = Survey.new()
     @test_id = params[:id]
     @score = 0
+    @wrong_questions = Array.new
+    @wrong_answers = Array.new
     @total = 0
     @survey = params[:survey]
-    @survey.each do |a, b|
-      @total += 1
-      if(Answer.find(b).correct)
-        @score += 1
+    if !@survey.nil?
+      @survey.each do |a, b|
+        @total += 1
+        answer = Answer.find(b)
+        if(answer.correct)
+          @score += 1
+        else
+          @wrong_questions << Question.find(a)
+          @wrong_answers << b.to_i
+        end
       end
     end
     summary = @score.to_f/@total*100
@@ -42,6 +51,7 @@ class SurveyController < ApplicationController
       @statement = Statement.new
       render :winer
     end
+
   end
 
   # PATCH/PUT /surveys/1

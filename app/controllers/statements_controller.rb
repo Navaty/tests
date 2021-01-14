@@ -31,7 +31,6 @@ class StatementsController < ApplicationController
   # POST /statements
   # POST /statements.json
   def create
-    raise
     @statement = Statement.new(statement_params)
 
     path_to_file = "#{Rails.root}/app/assets/images/cert#{@statement.id}.pdf"
